@@ -1,0 +1,31 @@
+---
+title: "Practice 1"
+author: "Fiona Beyerle"
+date: "1/6/2021"
+output: html_document
+---
+# Hello
+## Hello 
+# _hello_ 
+# **hello**
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+```{r message=FALSE, warning=FALSE}
+#install.packages("tidyverse")
+library("tidyverse")
+```
+```
+```{r}
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+    geom_bar()
+```
+```
+
+
+
+
+
