@@ -1,11 +1,11 @@
 ---
 title: "Lab 3 Homework"
-author: "Please Add Your Name Here"
-date: "`r Sys.Date()`"
+author: "Fiona Beyerle"
+date: "1/12/21"
 output:
-  html_document:
+  html_document: 
     theme: spacelab
-    toc: no
+    keep_md: yes
 ---
 
 ## Instructions
@@ -18,67 +18,87 @@ Make sure to use the formatting conventions of RMarkdown to make your report nea
 library(tidyverse)
 ```
 
+```{r}
+getwd()
+```
+
 ## Mammals Sleep
 1. For this assignment, we are going to use built-in data on mammal sleep patterns. From which publication are these data taken from? Since the data are built-in you can use the help function in R.
 ```{r}
-
+?msleep
 ```
 
 2. Store these data into a new data frame `sleep`.
 ```{r}
-
+sleep <- data.frame(msleep)
+sleep
 ```
 
 3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.  
 ```{r}
-
+dim.data.frame(sleep)
 ```
 
 4. Are there any NAs in the data? How did you determine this? Please show your code.  
 ```{r}
-
+is.na(sleep)
 ```
 
 5. Show a list of the column names is this data frame.
 ```{r}
-
+colnames(sleep)
 ```
 
 6. How many herbivores are represented in the data?  
 ```{r}
-
+plant_eater <- subset(sleep, vore=="herbi")
+plant_eater
 ```
 
 7. We are interested in two groups; small and large mammals. Let's define small as less than or equal to 1kg body weight and large as greater than or equal to 200kg body weight. Make two new dataframes (large and small) based on these parameters.
 ```{r}
+little_mammals <- subset(sleep, bodywt <= 1)
+little_mammals
+```
 
+```{r}
+large_mammals <- subset(sleep, bodywt>= 200)
+large_mammals
 ```
 
 8. What is the mean weight for both the small and large mammals?
 ```{r}
-
+w <- little_mammals$bodywt
+mean(w)
 ```
 
 ```{r}
-
+bigw <- large_mammals$bodywt
+mean(bigw)
 ```
 
 9. Using a similar approach as above, do large or small animals sleep longer on average?  
 ```{r}
-
+small_sleepy <- little_mammals$sleep_total
+small_sleepy
+mean(small_sleepy)
 ```
 
 ```{r}
-
+large_sleepy <- large_mammals$sleep_total
+large_sleepy
+mean(large_sleepy)
 ```
 
 10. Which animal is the sleepiest among the entire dataframe?
 ```{r}
-
+x=sleep$sleep_total
+max(x)
 ```
 
 ```{r}
-
+sleepiest <- subset(sleep, sleep_total==19.9)
+sleepiest
 ```
 
 ## Push your final code to GitHub!
