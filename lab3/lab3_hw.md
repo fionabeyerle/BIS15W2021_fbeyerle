@@ -25,7 +25,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/fionabeyerle/Desktop/BIS15W2021_fbeyerle/lab3"
+## [1] "D:/TA files/Winter2021 BIS15L/students_rep/BIS15W2021_fbeyerle/lab3"
 ```
 
 ## Mammals Sleep
@@ -33,6 +33,10 @@ getwd()
 
 ```r
 ?msleep
+```
+
+```
+## starting httpd help server ... done
 ```
 
 2. Store these data into a new data frame `sleep`.
