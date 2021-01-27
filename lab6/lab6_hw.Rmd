@@ -131,10 +131,6 @@ fisheries_tidy %>%
   summarize(sum_catch =sum(catch, na.rm=T)) %>%
   arrange(desc(sum_catch))
 ```
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
 
 8. Which five countries caught the most cephalopods between 2008-2012?
 ```{r}
@@ -146,7 +142,6 @@ fisheries_tidy %>%
   arrange(desc(sum_catch))
 ```
 
-</div>
 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}

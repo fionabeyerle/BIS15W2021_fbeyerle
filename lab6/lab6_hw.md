@@ -364,10 +364,6 @@ fisheries_tidy %>%
 ## 10 Denmark                     477
 ## # ... with 27 more rows
 ```
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
 
 8. Which five countries caught the most cephalopods between 2008-2012?
 
@@ -402,7 +398,6 @@ fisheries_tidy %>%
 ## 16 Viet Nam                         0
 ```
 
-</div>
 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}

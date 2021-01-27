@@ -104,6 +104,9 @@ superhero_info %>%
 ```{r}
 good_guys <- superhero_info %>% 
   filter(alignment=="good")
+```
+
+```{r}
 bad_guys <- superhero_info %>% 
   filter(alignment=="bad")
 ```
@@ -121,8 +124,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 7. Among the good guys, Who are the Asgardians?
 ```{r}
 good_guys %>%
-filter(race =="asgardian")
-  
+filter(race =="Asgardian")
 ```
 
 </div>
@@ -132,10 +134,21 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
 
+```{r}
+names(good_guys)
+```
+
+```{r}
+glimpse(good_guys)
+```
+
+
+
+
 8. Among the bad guys, who are the male humans over 200 inches in height?
 ```{r}
 bad_guys %>% 
-  filter(gender=="male") %>% 
+  filter(gender=="Male") %>% 
   filter(height>200)
 ```
 </div>
@@ -148,13 +161,13 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 9. OK, so are there more good guys or bad guys that are bald (personal interest)?
 ```{r}
 good_guys %>% 
-  filter(hair_color =="no hair") %>%
+  filter(hair_color =="No Hair") %>%
   count()
 ```
 
 ```{r}
 bad_guys %>% 
-  filter(hair_color =="no hair") %>% 
+  filter(hair_color =="No Hair") %>% 
   count()
 ```
 
