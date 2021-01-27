@@ -113,6 +113,10 @@ bad_guys <- superhero_info %>%
 tabyl(good_guys, race)
 names(good_guys)
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 7. Among the good guys, Who are the Asgardians?
 ```{r}
@@ -121,12 +125,25 @@ filter(race =="asgardian")
   
 ```
 
+</div>
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 8. Among the bad guys, who are the male humans over 200 inches in height?
 ```{r}
 bad_guys %>% 
   filter(gender=="male") %>% 
   filter(height>200)
 ```
+</div>
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 9. OK, so are there more good guys or bad guys that are bald (personal interest)?
 ```{r}
@@ -140,6 +157,8 @@ bad_guys %>%
   filter(hair_color =="no hair") %>% 
   count()
 ```
+
+</div>
 
 10. Let's explore who the really "big" superheros are. In the `superhero_info` data, which have a height over 200 or weight over 300?
 ```{r}
