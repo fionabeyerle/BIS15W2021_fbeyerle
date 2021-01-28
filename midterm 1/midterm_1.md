@@ -27,15 +27,11 @@ library(tidyverse)
 ## Questions
 **1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?**  
 
-```r
-# RStudio is a GUI used to interact with R. Github is a place where programmers can share their work to ensure repeatability. RMarkdown helps to create clean reports.
-```
+RStudio is a GUI used to interact with R. Github is a place where programmers can share their work to ensure repeatability. RMarkdown helps to create clean reports.
 
 **2. (2 points) What are the three types of `data structures` that we have discussed? Why are we using data frames for BIS 15L?**
 
-```r
-# We have discussed vectors, data frames and matrices. Data frames are useful for 15L because it helps us organize data in different ways.  
-```
+We have discussed vectors, data frames and matrices. Data frames are useful for 15L because it helps us organize data in different ways. 
 
 In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
 
@@ -66,6 +62,15 @@ glimpse(elephants)
 ## $ Age    <dbl> 1.40, 17.50, 12.75, 11.17, 12.67, 12.67, 12.25, 12.17, 28.17, …
 ## $ Height <dbl> 120.00, 227.00, 235.00, 210.00, 220.00, 189.00, 225.00, 204.00…
 ## $ Sex    <chr> "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M…
+```
+
+
+```r
+dim(elephants)
+```
+
+```
+## [1] 288   3
 ```
 
 **4. (2 points) Change the names of the variables to lower case and change the class of the variable `sex` to a factor.**
@@ -131,12 +136,15 @@ anyNA(elephants)
 ```
 
 ```r
-a <- elephants$age
-mean(a)
+elephants %>%
+  summarize(mean_age=mean(age))
 ```
 
 ```
-## [1] 10.97132
+## # A tibble: 1 x 1
+##   mean_age
+##      <dbl>
+## 1     11.0
 ```
 
 **7. (2 points) How does the average age and height of elephants compare by sex?**
@@ -183,7 +191,7 @@ elephants %>%
 elephants %>%
   filter(age > 25) %>%
   group_by(sex) %>%
-  summarize(average_age =mean(age), average_height= mean(height), min_height= min(height), max_height=max(height), n = n())
+  summarize(average_height= mean(height), min_height= min(height), max_height=max(height), n = n())
 ```
 
 ```
@@ -191,11 +199,11 @@ elephants %>%
 ```
 
 ```
-## # A tibble: 2 x 6
-##   sex   average_age average_height min_height max_height     n
-##   <fct>       <dbl>          <dbl>      <dbl>      <dbl> <int>
-## 1 F            27.3           233.       206.       278.    25
-## 2 M            26.6           273.       237.       304.     8
+## # A tibble: 2 x 5
+##   sex   average_height min_height max_height     n
+##   <fct>          <dbl>      <dbl>      <dbl> <int>
+## 1 F               233.       206.       278.    25
+## 2 M               273.       237.       304.     8
 ```
 
 For the next series of questions, we will use data from a study on vertebrate community composition and impacts from defaunation in [Gabon, Africa](https://en.wikipedia.org/wiki/Gabon). One thing to notice is that the data include 24 separate transects. Each transect represents a path through different forest management areas.  
@@ -278,15 +286,39 @@ class(vertebrates$LandUse)
 
 ```r
 vertebrates %>%
-  filter(HuntCat == "Moderate" | HuntCat =="High") %>%
+  filter(HuntCat == "Moderate") %>%
+  group_by(HuntCat) %>%
   summarize(average_b_diversity =mean(Diversity_BirdSpecies), average_m_diversity=mean(Diversity_MammalSpecies))
 ```
 
 ```
-## # A tibble: 1 x 2
-##   average_b_diversity average_m_diversity
-##                 <dbl>               <dbl>
-## 1                1.64                1.71
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## # A tibble: 1 x 3
+##   HuntCat  average_b_diversity average_m_diversity
+##   <fct>                  <dbl>               <dbl>
+## 1 Moderate                1.62                1.68
+```
+
+
+```r
+vertebrates %>%
+  filter(HuntCat == "High") %>%
+  group_by(HuntCat) %>%
+  summarize(average_b_diversity =mean(Diversity_BirdSpecies), average_m_diversity=mean(Diversity_MammalSpecies))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## # A tibble: 1 x 3
+##   HuntCat average_b_diversity average_m_diversity
+##   <fct>                 <dbl>               <dbl>
+## 1 High                   1.66                1.74
 ```
 
 **11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let's try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable `Distance` measures the distance of the transect from the nearest village. Hint: try using the `across` operator.**  
@@ -322,14 +354,19 @@ vertebrates %>%
 
 ```r
 vertebrates %>%
- filter(HuntCat == "None" | HuntCat =="Moderate") %>%
+ filter(HuntCat == "None") %>%
+  group_by(HuntCat) %>%
   summarize(average_species_diversity =mean(Diversity_AllSpecies))
 ```
 
 ```
-## # A tibble: 1 x 1
-##   average_species_diversity
-##                       <dbl>
-## 1                      2.31
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## # A tibble: 1 x 2
+##   HuntCat average_species_diversity
+##   <fct>                       <dbl>
+## 1 None                         2.35
 ```
 

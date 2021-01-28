@@ -27,14 +27,12 @@ library(tidyverse)
 
 ## Questions
 **1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?**  
-```{r}
-# RStudio is a GUI used to interact with R. Github is a place where programmers can share their work to ensure repeatability. RMarkdown helps to create clean reports.
-```
+
+RStudio is a GUI used to interact with R. Github is a place where programmers can share their work to ensure repeatability. RMarkdown helps to create clean reports.
 
 **2. (2 points) What are the three types of `data structures` that we have discussed? Why are we using data frames for BIS 15L?**
-```{r}
-# We have discussed vectors, data frames and matrices. Data frames are useful for 15L because it helps us organize data in different ways.  
-```
+
+We have discussed vectors, data frames and matrices. Data frames are useful for 15L because it helps us organize data in different ways. 
 
 In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
 
@@ -45,6 +43,10 @@ elephants <- readr::read_csv("data/ElephantsMF.csv")
 
 ```{r}
 glimpse(elephants)
+```
+
+```{r}
+dim(elephants)
 ```
 
 **4. (2 points) Change the names of the variables to lower case and change the class of the variable `sex` to a factor.**
@@ -71,8 +73,8 @@ elephants %>%
 anyNA(elephants)
 ```
 ```{r}
-a <- elephants$age
-mean(a)
+elephants %>%
+  summarize(mean_age=mean(age))
 ```
 
 **7. (2 points) How does the average age and height of elephants compare by sex?**
@@ -92,7 +94,7 @@ elephants %>%
 elephants %>%
   filter(age > 25) %>%
   group_by(sex) %>%
-  summarize(average_age =mean(age), average_height= mean(height), min_height= min(height), max_height=max(height), n = n())
+  summarize(average_height= mean(height), min_height= min(height), max_height=max(height), n = n())
 ```
 
 For the next series of questions, we will use data from a study on vertebrate community composition and impacts from defaunation in [Gabon, Africa](https://en.wikipedia.org/wiki/Gabon). One thing to notice is that the data include 24 separate transects. Each transect represents a path through different forest management areas.  
@@ -120,7 +122,15 @@ class(vertebrates$LandUse)
 **10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?**
 ```{r}
 vertebrates %>%
-  filter(HuntCat == "Moderate" | HuntCat =="High") %>%
+  filter(HuntCat == "Moderate") %>%
+  group_by(HuntCat) %>%
+  summarize(average_b_diversity =mean(Diversity_BirdSpecies), average_m_diversity=mean(Diversity_MammalSpecies))
+```
+
+```{r}
+vertebrates %>%
+  filter(HuntCat == "High") %>%
+  group_by(HuntCat) %>%
   summarize(average_b_diversity =mean(Diversity_BirdSpecies), average_m_diversity=mean(Diversity_MammalSpecies))
 ```
 
@@ -140,7 +150,8 @@ vertebrates %>%
 **12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
 ```{r}
 vertebrates %>%
- filter(HuntCat == "None" | HuntCat =="Moderate") %>%
+ filter(HuntCat == "None") %>%
+  group_by(HuntCat) %>%
   summarize(average_species_diversity =mean(Diversity_AllSpecies))
 ```
 
