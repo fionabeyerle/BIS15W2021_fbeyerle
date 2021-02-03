@@ -124,11 +124,17 @@ amphibio %>%
 ```
 I don't think the authors intended us to think there are NA's for these columns because that doesn't logically make sense that these are NA's so I believe they represent something else. 
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 **10. Now that we know how NA's are represented in the `amniota` data, how would you load the data such that the values which represent NA's are automatically converted?**
 ```{r}
 amniota_2 <- readr::read_csv("data/amniota.csv") %>%
   na_if("-999")
 ```
+</div>
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.  
