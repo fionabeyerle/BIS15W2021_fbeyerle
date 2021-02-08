@@ -61,6 +61,7 @@ According to the definitions of the tidyverse, these data are tidy because each 
 ```{r}
 sydneybeaches_long <- sydneybeaches %>%
   select(site, date, enterococci_cfu_100ml)
+sydneybeaches_long
 ```
 
 4. Pivot the data such that the dates are column names and each beach only appears once. Name the object `sydneybeaches_wide`
@@ -69,6 +70,7 @@ sydneybeaches_wide <- sydneybeaches_long %>%
   pivot_wider(names_from ="date",
              values_from ="enterococci_cfu_100ml",
              )
+sydneybeaches_wide
 ```
 
 5. Pivot the data back so that the dates are data and not column names.
@@ -85,6 +87,7 @@ sydneybeaches_wide %>%
 sydneybeaches_long_dates <- sydneybeaches_long %>%
   separate(date, into=c("day", "month", "year", sep = "_")) %>%
   select(-("_"))
+sydneybeaches_long_dates
 ```
 
 7. What is the average `enterococci_cfu_100ml` by year for each beach. Think about which data you will use- long or wide.
@@ -92,6 +95,7 @@ sydneybeaches_long_dates <- sydneybeaches_long %>%
 sydneybeaches_long_avg <- sydneybeaches_long_dates %>%
   group_by(year, site) %>%
   summarize(avg_bact = mean(enterococci_cfu_100ml, na.rm=T), .groups='keep')
+sydneybeaches_long_avg
 ```
 
 8. Make the output from question 7 easier to read by pivoting it to wide format.
@@ -99,6 +103,7 @@ sydneybeaches_long_avg <- sydneybeaches_long_dates %>%
 sydneybeaches_wide_avg <- sydneybeaches_long_avg %>%
   pivot_wider(names_from = "site",
               values_from = "avg_bact")
+sydneybeaches_wide_avg
 ```
 
 9. What was the most polluted beach in 2018?
