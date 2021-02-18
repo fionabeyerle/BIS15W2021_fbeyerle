@@ -49,12 +49,12 @@ glimpse(gapminder)
 ```
 ## Rows: 1,704
 ## Columns: 6
-## $ country   <fct> Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afghani…
-## $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia,…
-## $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997,…
-## $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.…
-## $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 1…
-## $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134,…
+## $ country   <fct> Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afgha...
+## $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asi...
+## $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 199...
+## $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 4...
+## $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372,...
+## $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.113...
 ```
 
 
@@ -94,10 +94,6 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 12 x 2
 ##     year mean_lifeExp
 ##    <int>        <dbl>
@@ -133,10 +129,6 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
@@ -151,10 +143,6 @@ gapminder %>%
   summarize(min_lifeExp=min(lifeExp),
             max_lifeExp=max(lifeExp),
             median_lifeExp=median(lifeExp))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
@@ -189,7 +177,7 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'continent' (override with `.groups` argument)
+## `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
 ```
 
 ```
@@ -207,7 +195,7 @@ gapminder %>%
 ##  8 Africa     1987        39.9        71.9           51.6
 ##  9 Africa     1992        23.6        73.6           52.4
 ## 10 Africa     1997        36.1        74.8           52.8
-## # … with 50 more rows
+## # ... with 50 more rows
 ```
 
 
@@ -233,7 +221,7 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'continent' (override with `.groups` argument)
+## `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
 ```
 
 ```
@@ -251,7 +239,7 @@ gapminder %>%
 ##  8 Africa     1987         53.3
 ##  9 Africa     1992         53.6
 ## 10 Africa     1997         53.6
-## # … with 50 more rows
+## # ... with 50 more rows
 ```
 
 
@@ -268,7 +256,7 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'continent' (override with `.groups` argument)
+## `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
 ```
 
 ![](lab11_hw_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
@@ -295,7 +283,7 @@ gapminder %>%
 ##  8      336.    45.0
 ##  9      339.    39.0
 ## 10      344.    38.0
-## # … with 1,694 more rows
+## # ... with 1,694 more rows
 ```
 
 ```r
@@ -327,10 +315,6 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 142 x 2
 ##    country       total_pop_growth
 ##    <fct>                    <int>
@@ -344,7 +328,7 @@ gapminder %>%
 ##  8 Nigeria              101912068
 ##  9 Mexico                78556574
 ## 10 Philippines           68638596
-## # … with 132 more rows
+## # ... with 132 more rows
 ```
 
 **8. Use your results from the question above to plot population growth for the top five countries since 1952.**
@@ -365,10 +349,6 @@ gapminder %>%
        y="Population Growth")
 ```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
 ![](lab11_hw_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
 **9. How does per-capita GDP growth compare between these same five countries?**
@@ -382,13 +362,9 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 5 x 2
 ##   country       total_gdpPercap
-##   <fct>                   <dbl>
+## * <fct>                   <dbl>
 ## 1 Brazil                 69952.
 ## 2 China                  17860.
 ## 3 India                  12688.
@@ -411,7 +387,7 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'country' (override with `.groups` argument)
+## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
 ```
 
 ![](lab11_hw_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
