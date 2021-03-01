@@ -157,6 +157,10 @@ biggest_life_expectancy_tidy <- life_expectancy_tidy %>%
 ```{r}
 biggest_life_expectancy_tidy
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 5. (3 points) Make a plot that shows the change over the past 100 years for the country with the biggest improvement in life expectancy. Be sure to add appropriate aesthetics to make the plot clean and clear. Once you have made the plot, do a little internet searching and see if you can discover what historical event may have contributed to this remarkable change.  
 
@@ -175,6 +179,7 @@ life_expectancy_tidy %>%
   labs(title="Kuwait Life Expectancy1920 to 2020",
        x="Year", y="Life Expectancy 1920-2020")
 ```
+</div>
 
 ## Population Growth
 6. (3 points) Which 5 countries have had the highest population growth over the past 100 years (1920-2020)?
