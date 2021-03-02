@@ -272,6 +272,10 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
+```{r}
+names(gabon)
+```
+
 ## That's it, let's take a break!   
 
 -->[Home](https://jmledford3115.github.io/datascibiol/)
