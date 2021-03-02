@@ -85,6 +85,15 @@ data1
 data(iris)                          # Loading data frame
 head(iris)                          # Head of example data
 iris1 <- iris                       # Replicate example data
+
+i <- 1
+repeat{
+ iris1[ , i] <- iris1[ , i] * 10
+ i <- i+1
+ if(!is.numeric(iris1[ , i]))
+   break
+}
+head(iris1)
 ```
 
 ## While-Loops
@@ -122,7 +131,14 @@ data2
 ### Practice: Please write a while loop to change all numeric data from in centimeters to millimeters.
 ```{r}
 head(iris)                                        # Showing head of data in RStudio console
-iris2 <- iris                                     # Replicate example data
+iris2 <- iris   
+i <- 1                              # Create running index
+while(is.numeric(iris2[ , i])) {
+                       # Start while-loop
+  iris2[ , i] <- iris2[ , i] * 10
+  i <- i + 1
+}
+head(iris2)
 ```
 
 ## For-Loops
@@ -156,7 +172,18 @@ data3
 ### Practice 1: Please write a for loop to change only width data from in centimeters to millimeters.
 ```{r}                                                 
 head(iris)                                             # Inspecting iris flower data set
-iris3 <- iris                                          # Replicate iris data set
+iris3 <- iris   
+for(i in c(2, 4)){
+  iris3[ , i] <- iris3[ , i] * 10
+}
+head(iris3)
+for(i in 1:ncol(iris3)){
+  if(str_detect(colnames(iris3)[i], "width")){
+    iris3[ , i] <- iris3[ , i] * 10
+  }
+}
+head(iris3)
+# Replicate iris data set
 ```
 
 ### example 2: Looping over files
@@ -185,6 +212,13 @@ results
 # Start by creating an empty data frame
 results <- data.frame(file_name = vector(mode = "character", length = length(data_files)),
                       count = vector(mode = "integer", length = length(data_files)))
+for (i in 1:length(data_files)){
+  data0 <- read_csv(data_files[i])
+  count <- nrow(data0)
+  results$file_name[i] <-data_files[i]
+  results$count[i] <-count
+}
+results
 ```
 
 ### example 3: Looping over files for ggplot
@@ -203,15 +237,18 @@ for (i in 1:length(data_files3)){
   )
 }
 # how to show them on a map?
+data_list <-lapply(data_files3, read_csv)
+collar_data_all <-bind_rows(data_list)
+collar_data_all
 ```
 
 ### example 4: Looping over files for basic genetic analysis
 [Bioconductor](https://www.bioconductor.org/) project is an open source software repository that hosts a wide range of statistical tools developed in the R programming environment. Please use standard R installation procedures to install the BiocManager package and then install "ShortRead" and "Biostrings". 
 ```{r message=FALSE, warning=FALSE}
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#     install.packages("BiocManager")
-# BiocManager::install()                            # To install core packages or update installed packages
-# BiocManager::install(c("ShortRead", "Biostrings"))# Install specific packages
+ if (!requireNamespace("BiocManager", quietly = TRUE))
+     install.packages("BiocManager")
+ BiocManager::install()                            # To install core packages or update installed packages
+ BiocManager::install(c("ShortRead", "Biostrings"))# Install specific packages
 library(ShortRead)
 library(Biostrings)
 ```
