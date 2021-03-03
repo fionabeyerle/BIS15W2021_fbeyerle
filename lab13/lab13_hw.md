@@ -26,18 +26,18 @@ if (!require("tidyverse")) install.packages('tidyverse')
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
 ```
 
 ```
-## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-## ✓ tibble  3.0.6     ✓ dplyr   1.0.4
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.1
+## √ ggplot2 3.3.3     √ purrr   0.3.4
+## √ tibble  3.1.0     √ dplyr   1.0.4
+## √ tidyr   1.1.2     √ stringr 1.4.0
+## √ readr   1.4.0     √ forcats 0.5.1
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -58,7 +58,7 @@ UC_admit <- readr::read_csv("data/UC_admit.csv")
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   Campus = col_character(),
 ##   Academic_Yr = col_double(),
@@ -78,12 +78,12 @@ glimpse(UC_admit)
 ```
 ## Rows: 2,160
 ## Columns: 6
-## $ Campus          <chr> "Davis", "Davis", "Davis", "Davis", "Davis", "Davis", …
-## $ Academic_Yr     <dbl> 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2018, …
-## $ Category        <chr> "Applicants", "Applicants", "Applicants", "Applicants"…
-## $ Ethnicity       <chr> "International", "Unknown", "White", "Asian", "Chicano…
-## $ `Perc FR`       <chr> "21.16%", "2.51%", "18.39%", "30.76%", "22.44%", "0.35…
-## $ FilteredCountFR <dbl> 16522, 1959, 14360, 24024, 17526, 277, 3425, 78093, 15…
+## $ Campus          <chr> "Davis", "Davis", "Davis", "Davis", "Davis", "Davis", ~
+## $ Academic_Yr     <dbl> 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2018, ~
+## $ Category        <chr> "Applicants", "Applicants", "Applicants", "Applicants"~
+## $ Ethnicity       <chr> "International", "Unknown", "White", "Asian", "Chicano~
+## $ `Perc FR`       <chr> "21.16%", "2.51%", "18.39%", "30.76%", "22.44%", "0.35~
+## $ FilteredCountFR <dbl> 16522, 1959, 14360, 24024, 17526, 277, 3425, 78093, 15~
 ```
 
 ```r
@@ -155,6 +155,10 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
+```
+## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+```
+
 `<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>`{=html}
 
 
@@ -205,6 +209,15 @@ shinyApp(ui, server)
 ```
 
 `<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>`{=html}
+
+
+```r
+getwd()
+```
+
+```
+## [1] "D:/TA files/Winter2021 BIS15L/students_rep/BIS15W2021_fbeyerle/lab13"
+```
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 
