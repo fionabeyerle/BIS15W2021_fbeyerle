@@ -33,7 +33,7 @@ knitr::opts_chunk$set(fig.width=8, fig.height=6, message=FALSE)
 
 The function read.cross is for importing data into R/qtl.
 ```{r}
-#?read.cross
+?read.cross
 ```
 
 ## Example 1: Identify genomic regions that regulate blood pressure, heart rate, and heart weight
@@ -150,15 +150,21 @@ data(grav)
 ## Practice
 1. Get a quick summary of the grav data. 
 ```{r}
-
+summary(grav)
+head(grav$pheno)
 ```
 2. Make an genetic map of markers for the grav data.
 ```{r}
-
+plotMap(grav)
 ```
 3. Plot a heat map of the correlation matrix for the phenotype at all pairs of times, linked to scatterplots of the phenotypes.
 ```{r}
+iplotMap(grav)
+```
 
+```{r}
+head(grav$pheno)
+iplotCorr(grav$pheno)
 ```
 
 ## iplotCurves
