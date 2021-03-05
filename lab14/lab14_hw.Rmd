@@ -145,6 +145,7 @@ summary(lod_score, threshold = 1)
 
 ```{r}
 iplotlod <- iplotScanone(lod_score, hyper, chr=c(1,2,4,5,6,15))
+iplotlod
 ```
 
 The gene with the highest LOD score tells us those who are homozygous have higher blood pressure. 
